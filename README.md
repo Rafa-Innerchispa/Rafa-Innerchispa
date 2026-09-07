@@ -1,204 +1,106 @@
-# Rafael Lopez / InnerChispa
+# Rafael López — InnerChispa
 
-**Building living AI infrastructure that helps a real small technology company operate, build products, recover from failure, and protect human attention.**
+**AI infrastructure and agentic systems engineer building local-first, auditable software for real operations.**
 
-I work at the intersection of physical infrastructure, software, local AI, cloud systems, and autonomous agents. My current focus is **InnerOS**, an agentic operating layer that grew out of a very practical problem: one person becoming the bottleneck across customers, development, servers, opportunities, operations, and everything that falls between them.
+I design and operate **InnerOS**: a governed multi-agent operating layer that connects software delivery, infrastructure, business workflows, persistent memory, and human approval. The objective is practical—return human attention by automating coordination, verification, recovery, and repetitive operational work.
 
-The goal is not to build another chatbot. The goal is to move the human from *remembering, chasing, checking, and repairing work* to the smaller set of decisions that still require human authority, judgment, relationships, creativity, or care.
+[![Website](https://img.shields.io/badge/InnerChispa-innerchispa.us-111827?style=flat-square)](https://innerchispa.us)
+[![Focus](https://img.shields.io/badge/Focus-Agentic%20Infrastructure-7c3aed?style=flat-square)](#inneros)
+[![Approach](https://img.shields.io/badge/Approach-Local--first-059669?style=flat-square)](#engineering-principles)
 
-## InnerOS / ARIA
+## What I build
 
-**InnerOS is a living AI operating system for a real small technology company. ARIA is the enterprise agent fleet that helps run it.**
+- **Agentic infrastructure:** durable multi-agent coordination, MCP/A2A integrations, scoped tools, task ownership, locks, evidence, and recovery.
+- **Local AI systems:** private inference across NVIDIA and AMD/ROCm nodes, with capability-aware routing and cloud burst only when justified.
+- **Operational products:** workforce, payroll, service operations, security, automation, and AI-assisted decision systems grounded in real company workflows.
+- **Governed execution:** deterministic business rules, least privilege, human approval gates, bounded spending, and verifiable outcomes.
 
-The operating loop is:
+## InnerOS
 
-```text
-signal -> relevance -> memory -> decision -> delegation
-       -> execution -> verification -> recovery -> evidence -> learning
-```
-
-Signals can come from email, repositories, infrastructure, business systems, customer operations, deadlines, cloud credits, devices, or other agents. InnerOS is designed to determine what matters in context, delegate to specialized capabilities, act through bounded tools, verify the result, preserve evidence, recover from failure, and involve a human only when needed.
-
-A simple example became an important design lesson: an email explicitly stating that **$100 in AMD Developer Cloud credit would expire** was once classified as low importance because it looked like marketing. The correct system should understand the business context, register the resource, recommend the highest-value use, create one canonical action, follow it through, and close the loop.
-
-That failure became part of the product.
-
-## A living, self-healing system
-
-A core idea in InnerOS is that failure is expected.
-
-Agents stall. Services crash. Models make bad decisions. Workers collide. Retries can become loops. A timestamp can look like progress when nothing useful happened. Cloud resources can remain running and waste money. Human operators can simply forget to check.
-
-InnerOS is being built so the infrastructure can **detect those failures and repair safely when policy allows**.
-
-Current self-healing and recovery patterns include:
-
-- agents supervising agents and long-running tasks;
-- distinguishing heartbeats from actual progress;
-- detecting stalled workers;
-- bounded retries and recovery without resurrecting intentionally blocked tasks;
-- service health guardians and controlled restarts;
-- repository ownership and locks so agents do not overwrite each other;
-- isolated Git worktrees for repairs and development;
-- deduplication of repeated tasks and signals;
-- evidence requirements before a task is considered complete;
-- routing blocked work to a different model or compute resource when appropriate;
-- explicit approval boundaries for repairs that would create risk or spend money.
-
-This is not a claim that the system never fails. It is a stronger engineering claim:
-
-> **InnerOS expects failure, detects it, repairs what it safely can, verifies the result, and records what happened.**
-
-An important part of the hackathon story is that **InnerOS is actively being used to improve InnerOS itself**.
-
-## Hybrid, local-first AI infrastructure
-
-InnerOS is intentionally not tied to one model vendor or one computer. It currently spans **two local AI nodes plus cloud services and temporary cloud-burst capacity**.
-
-### NVIDIA node
-
-- Host: `ralphi-ia-ver-10`
-- Ubuntu 24.04
-- NVIDIA GeForce RTX 3060
-- **12 GB VRAM**
-- Ollama and local model services
-- Hosts a large portion of the long-running operational stack: MongoDB, Qdrant, n8n, Home Assistant, messaging/integration services, MCP services, browser automation, observability and supporting runtimes
-
-### AMD node
-
-- Host: `ralfiia-amd`
-- AMD Radeon AI PRO R9700
-- **~34 GB VRAM class**
-- ROCm
-- vLLM OpenAI-compatible serving
-- Used for larger local inference and coding workloads
-
-At the time of the current hackathon work, the AMD node is serving a Qwen3 Coder 30B-class quantized model through vLLM.
-
-InnerOS routes work by capability, privacy, cost, available hardware and operational risk instead of assuming every task belongs in the cloud.
-
-**Cloud when it adds value. Local when it does not.**
-
-## Temporary AMD cloud burst
-
-The same resource fabric can extend beyond the two physical servers when external capacity has real strategic value.
-
-The current AMD/DigitalOcean provider path can inspect GPU capacity, estimate cost, require an approval token, enforce a short apply window, cap spend per session, and require destruction of the resource to stop billing.
-
-A current candidate is an **AMD Instinct MI325X with 256 GB VRAM**. The intended pattern is:
+InnerOS is not another chatbot. It is an operating layer for turning signals into safe, reviewable action:
 
 ```text
-credit detected
-  -> high-value workload identified
-  -> owner approval
-  -> ephemeral AMD GPU provisioned
-  -> development/inference work executed
-  -> tests and evidence collected
-  -> resource destroyed
-  -> cost recorded
+signal → relevance → memory → decision → delegation
+       → execution → verification → recovery → evidence → learning
 ```
 
-The important point is not renting a large GPU. It is proving that the operating system can decide **where compute should exist, what work it should receive, how much it may cost, and when it must disappear**.
+The system is designed around a simple truth: agents, services, models, and humans all fail. Reliable autonomy therefore requires persistent state, explicit authority, failure detection, bounded repair, and evidence before completion.
 
-## ChatGPT, Gemini and a model-agnostic control plane
-
-A meaningful part of this project has been built and operated through **ChatGPT as a human-facing engineering and operations interface**, connected to InnerOS through its MCP/tooling layer and real infrastructure controls.
-
-That is part of the story, not something to hide because the current hackathon is hosted by Google.
-
-For the **All Things Agentic Hackathon**, Gemini and Google Cloud provide the Google-native reasoning, agent and production infrastructure path. InnerOS is designed so that Gemini, local models, and other authorized model providers can participate behind the same governed operational layer.
-
-The important architectural boundary is not the logo on the model. It is the separation between:
-
-- reasoning;
-- persistent state and memory;
-- scoped tools;
-- identity and permissions;
-- deterministic business rules;
-- resource routing and cost policy;
-- verification and evidence;
-- human approval boundaries.
-
-## Current Google hackathon project
-
-### InnerOS - ARIA Enterprise Agent Fleet
-
-**All Things Agentic Hackathon / Fortified Enterprise Fleet**
-
-The project evolved from an earlier workforce-centered view into a broader and more accurate product:
-
-> **A living AI operating system that helps a small real-world technology company behave as if it had a much larger operational team.**
-
-The hackathon build focuses on the new unified agentic operating layer: long-running task state, ownership and locks, local/cloud routing, recovery, persistent coordination, security/governance, cross-domain orchestration, executive intelligence, self-healing behavior, and Google Cloud execution.
-
-Pre-existing foundations are disclosed rather than pretending everything was created during the hackathon.
-
-## Workforce is proof, not the whole product
-
-One of the products being built and operated through this environment is **Workforce**, a multi-tenant workforce operations platform for attendance, schedules, mobile check-ins, biometrics, incidents, reporting and deterministic pre-payroll.
-
-The relationship is recursive but practical:
+### Architecture at a glance
 
 ```text
-InnerOS helps operate the company
-        -> the company builds Workforce
-        -> Workforce automates customer operations
+Human / business / infrastructure signals
+                  │
+                  ▼
+        InnerOS coordination plane
+    identity • memory • policy • routing
+                  │
+       ┌──────────┼──────────┐
+       ▼          ▼          ▼
+ local models   cloud AI   specialist agents
+       │          │          │
+       └──────────┼──────────┘
+                  ▼
+ scoped tools • Git worktrees • business systems
+                  │
+                  ▼
+ verification • recovery • audit evidence
 ```
 
-Workforce remains a real commercial priority, but in the hackathon it is evidence that the agent infrastructure is operating against real software and real business requirements rather than toy tasks.
+## Selected work
 
-## Security and agentic defense
+| Project | What it demonstrates | Status |
+|---|---|---|
+| [InnerOps Agentic Platform](https://github.com/Rafa-Innerchispa/innerops-agentic-platform) | Governed agent fleet, coordination, capability routing, and operational infrastructure | Active platform work |
+| [InnerOS Forensic Replay](https://github.com/Rafa-Innerchispa/inneros-forensic-replay) | Hashed evidence bundles, deterministic replay, audit replay, and counterfactual analysis | Active research and engineering |
+| [InnerOS WebMCP](https://github.com/Rafa-Innerchispa/inneros-webmcp) | Public-safe control surface for multi-agent operations | Active integration surface |
+| [HyperLoom R9700 Experimental](https://github.com/Rafa-Innerchispa/hyperloom-r9700-experimental) | Reproducible AMD Radeon AI PRO R9700 / ROCm experimentation with explicit truth boundaries | Experimental |
+| [InnerSpark Workforce AI](https://github.com/Rafa-Innerchispa/innerspark-workforce-ai) | Workforce operations, attendance, incidents, reporting, and pre-payroll automation | Product development |
+| [FounderOS OpenAI](https://github.com/Rafa-Innerchispa/ralphiia-founderos-openai) | Founder operating loop across WhatsApp, MCP, local infrastructure, and AI tooling | Applied R&D |
+| [Engineering Journal](https://github.com/Rafa-Innerchispa/inneros-engineering-journal) | Public notes on failures, fixes, architecture, and measured learnings | Ongoing |
 
-Allowing agents to perform real actions changes the engineering problem completely. InnerOS uses defense-in-depth principles such as:
+## Engineering principles
 
-- least-privilege tool and repository scopes;
-- explicit approval gates for high-impact actions;
-- isolated Git worktrees and repository locks;
-- bounded command allowlists instead of arbitrary shell execution;
-- tenant isolation and deterministic business rules;
-- secret handling outside model-visible output;
-- persistent audit/evidence records;
-- stalled-work detection, retries and recovery;
-- bounded cloud spending and short apply windows;
-- prompt/tool-injection defenses and Model Armor integration work for Google-hosted paths;
-- observability of agent actions rather than trusting opaque success messages.
+1. **Local-first, not local-only.** Use private infrastructure by default; use cloud capacity when it creates measurable value.
+2. **Evidence over confident claims.** A task is not complete without tests, runtime evidence, or an explicit truth boundary.
+3. **Authority is part of the architecture.** High-impact actions require scoped permissions, approvals, and auditability.
+4. **Failure is a normal state.** Detect stalls, prevent collisions, recover safely, and preserve what happened.
+5. **Human attention is the metric.** Optimize for time returned, errors avoided, decisions prepared, and work actually closed.
+6. **Freeze → Extract → Integrate.** Preserve hackathon submissions as historical artifacts; move reusable capabilities into maintained successors instead of rewriting the evidence.
 
-Google's Agentic Defense direction is especially relevant because it maps directly to problems that appear once agents can act: prompt injection, poisoned tool output, excessive privileges, data leakage and compromised runtime behavior.
+## Current technical focus
 
-## AMD / ROCm
+- MCP and A2A control planes for heterogeneous agent fleets
+- local model routing with AMD ROCm/vLLM and NVIDIA/Ollama infrastructure
+- durable coordination, forensic replay, and recovery automation
+- secure Git-based development through isolated branches and worktrees
+- deterministic operational workflows backed by MongoDB, Qdrant, and Notion
+- cost-aware cloud burst and short-lived infrastructure
+- workforce, service operations, payroll, physical security, and automation
 
-The AMD node is not decorative hardware. It is part of the local-first strategy.
+## Repository map
 
-Current work includes evaluating AMD's newly published **AMD Skills** approach so agents can reuse AMD-validated ROCm procedures instead of improvising hardware operations. Production upgrades remain deliberately conservative: useful infrastructure should not be sacrificed for novelty days before a submission deadline.
+This account contains several kinds of repositories:
 
-## What I am trying to change
+- **Canonical platform and products** — maintained InnerOS and business capabilities.
+- **Hackathon submissions** — frozen snapshots that preserve what was submitted.
+- **Successor projects** — continued development extracted from those snapshots.
+- **Experimental probes** — bounded repositories used to prove or reject one technical hypothesis.
+- **Public evidence and identity** — profile, engineering journal, demos, and documentation.
 
-The technology is interesting, but the reason matters more.
-
-I do not want AI to create another layer of work that I have to supervise constantly. I want it to absorb the repetitive coordination that consumes attention: monitoring, remembering, following up, checking status, connecting signals, recovering stalled work, repairing routine failures, and preparing the next safe action.
-
-The target experience is:
-
-> **InnerOS notices what matters, does what it safely can, repairs what it safely can, and brings the human back only when the human is actually needed.**
-
-## Projects and ecosystem
-
-- **InnerOS / ARIA** - multi-agent operational infrastructure and company operating layer
-- **Workforce** - workforce operations, attendance and pre-payroll automation
-- **PC Doctor** - real-world infrastructure, networks, security, automation and building technology
-- **InnerChispa** - AI infrastructure, agents, APIs, local compute and experimentation
-- **InnerSpark** - technology, education and human-centered exploration
+That distinction is intentional. Hackathon repositories are not silently rewritten after submission; reusable engineering is extracted into successor repositories with clearer ownership and lifecycle.
 
 ## Current priorities
 
-1. Ship the All Things Agentic hackathon version of InnerOS with one undeniable end-to-end autonomous workflow.
-2. Demonstrate real self-healing and controlled resource orchestration, not just agent chat.
-3. Finish Workforce to commercial quality for real customers.
-4. Make the executive-intelligence loop reliable enough that important signals no longer depend on one human remembering to look at them.
-5. Keep local AI as the default when it is sufficient, while using Gemini/Google Cloud and temporary external AMD capacity where they genuinely add value.
-6. Measure the actual outcome in time saved, errors avoided, work closed, resources governed, and human attention returned.
+- prove end-to-end autonomy through real operational workflows rather than agent demos;
+- consolidate the InnerOS architecture and repository lineage into a recoverable system map;
+- turn Workforce and Service Operations into production-quality products;
+- strengthen security, observability, forensic replay, and self-healing behavior;
+- measure human time returned and operational work closed.
 
----
+## Connect
 
-**InnerChispa:** https://innerchispa.us  
-**Current hackathon project:** https://devpost.com/software/innerops-aria-enterprise-agent-fleet
+- **InnerChispa:** [innerchispa.us](https://innerchispa.us)
+- **GitHub:** [github.com/Rafa-Innerchispa](https://github.com/Rafa-Innerchispa)
+
+> Building AI systems that notice what matters, do what they safely can, verify the result, and return the human only when human judgment is genuinely required.
