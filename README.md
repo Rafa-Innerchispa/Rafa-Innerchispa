@@ -47,6 +47,39 @@ Human / business / infrastructure signals
  verification • recovery • audit evidence
 ```
 
+<!-- INNEROS-ECOSYSTEM-MAP:START -->
+## InnerOS ecosystem map
+
+InnerOS is developed as one system with several layers. Public repositories fall into one of these roles:
+
+| Layer | Purpose | Representative projects |
+|---|---|---|
+| **Core Platform** | Coordination, policy, execution, routing, recovery and evidence | [InnerOps Agentic Platform](https://github.com/Rafa-Innerchispa/innerops-agentic-platform), [Forensic Replay](https://github.com/Rafa-Innerchispa/inneros-forensic-replay) |
+| **Products** | Maintained capabilities built on top of the platform | [Personal Brain](https://github.com/Rafa-Innerchispa/inneros-personal-brain), [Workforce](https://github.com/Rafa-Innerchispa/innerspark-workforce-ai), VoiceOps, Physical Guardian |
+| **Product Surfaces** | Governed interfaces into the private execution fabric | [WebMCP](https://github.com/Rafa-Innerchispa/inneros-webmcp) |
+| **R&D / Hackathon Validation** | Bounded environments used to validate technologies and architectural hypotheses | AMD, AWS, AssemblyAI, Executable World, AI Infra Summit and related event repositories |
+| **Evidence / Engineering Notes** | Public technical record of what worked, failed, changed and why | [Engineering Journal](https://github.com/Rafa-Innerchispa/inneros-engineering-journal) |
+
+The relationship is deliberate:
+
+```text
+real operational problem
+        ↓
+InnerOS core capability
+        ↓
+bounded experiment / hackathon validation
+        ↓
+measured evidence
+        ↓
+reusable capability
+        ↓
+maintained product or platform layer
+```
+
+Hackathons are therefore part of the R&D process, not separate product identities. Submission repositories preserve the historical evidence; reusable engineering moves forward into maintained InnerOS components.
+
+<!-- INNEROS-ECOSYSTEM-MAP:END -->
+
 ## Selected work
 
 | Project | What it demonstrates | Status |
