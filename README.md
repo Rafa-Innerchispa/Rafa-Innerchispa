@@ -96,17 +96,54 @@ Hackathons are therefore part of the R&D process, not separate product identitie
 
 <!-- INNEROS-ECOSYSTEM-MAP:END -->
 
-## Selected work
+<!-- INNEROS-FEATURED:START -->
+## Start here
 
-| Project | What it demonstrates | Status |
+These six repositories best explain the current InnerOS system from platform to real-world operation:
+
+| System | Role | Why it matters |
 |---|---|---|
-| [InnerOps Agentic Platform](https://github.com/Rafa-Innerchispa/innerops-agentic-platform) | Governed agent fleet, coordination, capability routing, and operational infrastructure | Active platform work |
-| [InnerOS Forensic Replay](https://github.com/Rafa-Innerchispa/inneros-forensic-replay) | Hashed evidence bundles, deterministic replay, audit replay, and counterfactual analysis | Active research and engineering |
-| [InnerOS WebMCP](https://github.com/Rafa-Innerchispa/inneros-webmcp) | Public-safe control surface for multi-agent operations | Active integration surface |
-| [HyperLoom R9700 Experimental](https://github.com/Rafa-Innerchispa/hyperloom-r9700-experimental) | Reproducible AMD Radeon AI PRO R9700 / ROCm experimentation with explicit truth boundaries | Experimental |
-| [InnerSpark Workforce AI](https://github.com/Rafa-Innerchispa/innerspark-workforce-ai) | Workforce operations, attendance, incidents, reporting, and pre-payroll automation | Product development |
-| [FounderOS OpenAI](https://github.com/Rafa-Innerchispa/ralphiia-founderos-openai) | Founder operating loop across WhatsApp, MCP, local infrastructure, and AI tooling | Applied R&D |
-| [Engineering Journal](https://github.com/Rafa-Innerchispa/inneros-engineering-journal) | Public notes on failures, fixes, architecture, and measured learnings | Ongoing |
+| [**InnerOps Agentic Platform**](https://github.com/Rafa-Innerchispa/innerops-agentic-platform) | **Core platform** | Governed multi-agent coordination, MCP/A2A, routing, bounded execution, recovery and evidence. |
+| [**Personal Brain**](https://github.com/Rafa-Innerchispa/inneros-personal-brain) | **Cognitive layer** | Sovereign memory, context, live perception and governed reasoning across agents. |
+| [**Physical Guardian**](https://github.com/Rafa-Innerchispa/inneros-physical-guardian-ai-infra-2026) | **Physical AI** | Cameras, sensors, edge perception, approval, verification and evidence for real environments. |
+| [**WebMCP**](https://github.com/Rafa-Innerchispa/inneros-webmcp) | **Agent interface** | Browser-native access to local AI, project workspaces, execution lanes, evidence and bounded physical control. |
+| [**FounderOS**](https://github.com/Rafa-Innerchispa/ralphiia-founderos-openai) | **Operational OS** | Connects conversation, memory, infrastructure, development and business operations into one practical founder loop. |
+| [**AEGIS ForkGuard**](https://github.com/Rafa-Innerchispa/aegis-forkguard) | **Agent safety** | Counterfactual pre-execution firewall that forks possible futures before an autonomous agent commits an irreversible action. |
+
+Together they show the full stack:
+
+```text
+coordination
+    ↓
+memory + reasoning
+    ↓
+perception + interfaces
+    ↓
+governed execution
+    ↓
+real-world operations
+    ↓
+evidence + safety
+```
+
+### Active products
+
+- [**Workforce**](https://github.com/Rafa-Innerchispa/innerspark-workforce-ai) — attendance, incidents, reporting and deterministic pre-payroll automation.
+- **VoiceOps** — governed voice interaction for operational actions, approval and evidence.
+- **FieldOps** — human-approved workflows for real-world tasks and physical operations.
+- **Ambient Guardian** — Alexa+/MCP orchestration for contextual, verified smart-environment actions.
+
+### Core capabilities
+
+- [**Forensic Replay**](https://github.com/Rafa-Innerchispa/inneros-forensic-replay) — content-addressed evidence, deterministic replay and counterfactual analysis.
+- **DMX Engine** — bounded physical-control execution for lighting and stage automation.
+- **MCP / A2A infrastructure** — agent-to-tool and agent-to-agent control surfaces across the ecosystem.
+
+### R&D and validation
+
+AMD/ROCm, HyperLoom, AWS, AssemblyAI, AI Infra Summit, Executable World and other hackathons are treated as **bounded R&D environments**. They validate technologies and architectural hypotheses; successful capabilities are promoted into maintained InnerOS products or core infrastructure.
+<!-- INNEROS-FEATURED:END -->
+
 
 ## Engineering principles
 
