@@ -47,6 +47,14 @@ Human / business / infrastructure signals
  verification • recovery • audit evidence
 ```
 
+<!-- INNEROS-ARCHITECTURE-VISUAL:START -->
+<p align="center">
+  <img src="./assets/inneros-local-first-architecture.png" alt="InnerOS local-first architecture: perceive, reason, act, governed execution and sovereign compute" width="100%">
+</p>
+
+<p align="center"><sub><strong>InnerOS architecture.</strong> Perception, reasoning and action are connected through governed execution, evidence and local-first compute.</sub></p>
+<!-- INNEROS-ARCHITECTURE-VISUAL:END -->
+
 <!-- INNEROS-ECOSYSTEM-MAP:START -->
 ## InnerOS ecosystem map
 
@@ -77,6 +85,14 @@ maintained product or platform layer
 ```
 
 Hackathons are therefore part of the R&D process, not separate product identities. Submission repositories preserve the historical evidence; reusable engineering moves forward into maintained InnerOS components.
+
+<!-- INNEROS-RD-VISUAL:START -->
+<p align="center">
+  <img src="./assets/inneros-rd-to-product.png" alt="InnerOS R&D flow from real operational problems through hackathon validation to maintained products and core capabilities" width="100%">
+</p>
+
+<p align="center"><sub><strong>R&D as a system.</strong> Hackathons and bounded experiments validate technology; only useful, evidenced capabilities are promoted into maintained InnerOS products or core infrastructure.</sub></p>
+<!-- INNEROS-RD-VISUAL:END -->
 
 <!-- INNEROS-ECOSYSTEM-MAP:END -->
 
